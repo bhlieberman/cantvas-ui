@@ -7,9 +7,11 @@ import {
 import './index.css';
 import App from './App';
 import { Root, loader as rootLoader } from './routes/root';
-import { Details, detailsLoader } from './routes/details';
+import { Details, detailsLoader, studentAction } from './routes/details';
+import { Student } from './routes/student';
 import ErrorPage from './errorPage';
 import reportWebVitals from './reportWebVitals';
+import { CourseInfo } from './components/CourseInfo';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +23,18 @@ const router = createBrowserRouter([
       {
         path: "/details/:courseId",
         element: <Details />,
-        loader: detailsLoader
+        loader: detailsLoader,
+        action: studentAction,
+        children: [
+          {
+            path: "/details/:courseId/student/:studentId",
+            element: <Student />
+          }
+        ]
+      },
+      {
+        path: "/courses",
+        element: <CourseInfo />
       }
     ]
   },

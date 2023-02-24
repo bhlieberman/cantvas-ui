@@ -26,13 +26,13 @@ export function CourseInfo() {
         return (
             <div className="CourseInfo" id="courses-div">
                 {items.map(course => {
-                    return (<div id="course-description">
+                    return (<div id="course-description" key={course.id}>
                         <p>Course name: {course.name}</p>
                         <p>
                             Begin date: {course.beginDate}
                         </p>
                         <p>End date: {course.endDate}</p>
-                        <Link to="/details">
+                        <Link to={`/details/${course.id}`}>
                             <button id="detailed-course-button">View course details</button>
                         </Link>
                     </div>)

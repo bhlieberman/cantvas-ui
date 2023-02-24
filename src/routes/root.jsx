@@ -29,14 +29,13 @@ export default function Root() {
                         <button type="submit">New</button>
                     </form>
                 </div>
-                <nav>
+                <nav id="nav-bar">
                     {details.length ? (
                         <ul>
                             {details.map((detail) => (
                                 <li key={detail.id}>
                                     <Link to={`details/${detail.id}`}>
                                         {detail.name}{" "}
-                                        {detail.favorite && <span>★</span>}
                                     </Link>
                                 </li>
                             ))}
@@ -55,7 +54,8 @@ export default function Root() {
     );
 }
 
-export async function loader() {
+export async function loader({ params }) {
+    console.log(params);
     const details = await fetch("http://localhost:8080/api/courses/info/enrolled?courseId=1");
     return details;
 }
