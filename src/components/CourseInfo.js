@@ -7,7 +7,7 @@ export function CourseInfo() {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/courses/all")
+        fetch(`${process.env.REACT_APP_BACKEND}api/courses/all`)
             .then(res => res.json())
             .then((result) => {
                 setIsLoaded(true);

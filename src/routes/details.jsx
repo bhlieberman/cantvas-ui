@@ -19,7 +19,7 @@ export function Details() {
 }
 
 export async function detailsLoader({ params }) {
-    const details = await fetch(`http://localhost:8080/api/courses/info/enrolled/${params.courseId}`);
+    const details = await fetch(`${process.env.REACT_APP_BACKEND}api/courses/info/enrolled/${params.courseId}`);
     return details;
 }
 
@@ -27,7 +27,7 @@ export async function studentAction({ request, params }) {
     const formData = await request.formData();
     const name = formData.get("student-name");
     const email = formData.get("student-email");
-    return await fetch(`http://localhost:8080/api/courses/enroll?courseId=${params.courseId}`, {
+    return await fetch(`${process.env.REACT_APP_BACKEND}api/courses/enroll?courseId=${params.courseId}`, {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json',

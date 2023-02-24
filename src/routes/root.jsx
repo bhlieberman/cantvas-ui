@@ -56,6 +56,6 @@ export default function Root() {
 
 export async function loader({ params }) {
     console.log(params);
-    const details = await fetch("http://localhost:8080/api/courses/info/enrolled?courseId=1");
+    const details = await fetch(`${process.env.REACT_APP_BACKEND}api/courses/info/enrolled?courseId=1`);
     return details;
 }
